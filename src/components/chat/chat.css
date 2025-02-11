@@ -58,14 +58,13 @@
 .chat .center {
     padding: 20px;
     flex: 1;
-    overflow-y: auto; /* Only vertical scrolling */
+    overflow-y: auto; 
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Scrollbar styling */
 .chat .center::-webkit-scrollbar {
     width: 8px;
 }

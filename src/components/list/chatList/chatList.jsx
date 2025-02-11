@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import '../chatList/chatList.css'
+import '../chatList/chatList.css';
 import AddUser from './addUser/addUser';
 
 const ChatList = () => {
-    const [addMode, setAddMode] = useState(false);
+const [addMode, setAddMode] = useState(false);
 
     return (
 
         <div className='chatlist'>
-
-            <div className='search'>
+        <div className='search'>
                 <div className='searchbar'>
                     <img src='./search.png' alt='search' />
                     <input type='text' placeholder='Search' className='input' />
@@ -20,7 +19,6 @@ const ChatList = () => {
                     alt='plus'
                     className='add'
                     onClick={() => setAddMode((prev) => !prev)}
-
                 />
             </div>
             <div className="item">
@@ -112,7 +110,7 @@ const ChatList = () => {
               {addMode &&  <AddUser/>}
         </div>
 
-    )
+)
 }
 
 export default ChatList;

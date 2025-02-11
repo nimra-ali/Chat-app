@@ -89,7 +89,7 @@ console.log(Text)
 </div>
 <div className="message own">
 <div className="text">
-<div class="special-image">
+<div className="special-image">
     <img src="https://static.scientificamerican.com/sciam/cache/file/4F73FD83-3377-42FC-915AD56BD66159FE_source.jpg" alt="Special Image"/>
 </div>
 
