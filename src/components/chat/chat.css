@@ -58,7 +58,7 @@
 .chat .center {
     padding: 20px;
     flex: 1;
-    overflow-y: auto; 
+    overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -183,4 +183,3 @@
     object-fit: cover !important;
     border-radius: 10px !important;
 }
-

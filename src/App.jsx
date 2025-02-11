@@ -12,18 +12,18 @@ const App = () => {
     <div className='container'>
       {user ? (
 
-<>
+        <>
 
-<List/>
-<Chat/>
-<Detail/>
+          <List />
+          <Chat />
+          <Detail />
 
-</>
+        </>
       ) : (
-        <Login/>
+        <Login />
       )}
 
-      <Notification/>
+      <Notification />
     </div>
   )
 }

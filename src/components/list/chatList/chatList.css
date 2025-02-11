@@ -1,14 +1,14 @@
     .chatlist {
         flex: 1;
         overflow: scroll;
-        scrollbar-width: thin; 
-        scrollbar-color: #dddddd35 transparent; 
+        scrollbar-width: thin;
+        scrollbar-color: #dddddd35 transparent;
     }
 
     .chatlist::-webkit-scrollbar {
         width: 8px;
     }
-        
+
     .chatlist::-webkit-scrollbar-track {
         background: transparent;
     }
@@ -16,7 +16,7 @@
     .chatlist::-webkit-scrollbar-thumb {
         background: #dddddd35;
         border-radius: 4px;
-        border: none; 
+        border: none;
     }
 
     .chatlist::-webkit-scrollbar-corner {
