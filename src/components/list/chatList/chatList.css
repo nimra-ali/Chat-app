@@ -1,0 +1,97 @@
+.chatlist {
+    flex: 1;
+    overflow: scroll;
+    scrollbar-width: thin; /* Firefox ke liye */
+    scrollbar-color: #dddddd35 transparent; /* Firefox scrollbar color */
+}
+
+/* Scrollbar ko style karne ke liye (Chrome, Edge, Safari) */
+.chatlist::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatlist::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatlist::-webkit-scrollbar-thumb {
+    background: #dddddd35;
+    border-radius: 4px;
+    border: none; /* Extra line hatane ke liye */
+}
+
+/* Extra white line ko remove karne ke liye */
+.chatlist::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.searchbar {
+    flex: 1;
+    background-color: rgba(17, 25, 40, 0.5);
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.searchbar input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    flex: 1;
+}
+
+.searchbar img {
+    width: 20px;
+    height: 20px;
+}
+
+.add {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(17, 25, 40, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #dddddd35;
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text span {
+    font-size: 500;
+}
+
+.text p {
+    font-size: 14px;
+    font-weight: 300;
+}
