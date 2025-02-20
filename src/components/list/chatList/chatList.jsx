@@ -4,7 +4,7 @@ import AddUser from './addUser/addUser';
 
 const ChatList = () => {
 
-    const [addMode, setAddMode] = useState(false);
+const [addMode, setAddMode] = useState(false);
 
     return (
 

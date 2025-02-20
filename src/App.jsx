@@ -20,10 +20,10 @@ const App = () => {
 
         </>
       ) : (
-        <Login />
+        <Login/>
       )}
 
-      <Notification />
+      <Notification/>
     </div>
   )
 }

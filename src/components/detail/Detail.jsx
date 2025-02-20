@@ -37,7 +37,7 @@ const Detail = () => {
               </div>
               <img src="./download.png" alt="" className="downloadicon" />
             </div>
-            <div className="photositem">
+            <div className="photositem">      
               <div className="photosdetail">
 
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNn3ygM-e3ezPhbth7zvDi4SFy0JTCHPIatg&s" alt="Special Image" />
@@ -68,8 +68,8 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        <button className="blockbutton"  >Block User</button>
-        <button className="logout"  >LogOut</button>
+        <button className="blockbutton">Block User</button>
+        <button className="logout">LogOut</button>
 
       </div>
     </div>

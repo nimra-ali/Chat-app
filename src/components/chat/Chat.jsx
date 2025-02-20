@@ -34,7 +34,6 @@ const Chat = () => {
           <img src="./phone.png" alt="" />
           <img src="./video.png" alt="" />
           <img src="./info.png" alt="" />
-
         </div>
       </div>
       <div className="center">
@@ -93,8 +92,7 @@ const Chat = () => {
               <img src="https://static.scientificamerican.com/sciam/cache/file/4F73FD83-3377-42FC-915AD56BD66159FE_source.jpg" alt="Special Image" />
             </div>
 
-
-            <p>
+           <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum doloremque delectus
               modi nulla aliquid vel at. Repellat quam, rem minus consectetur quas voluptate hic esse explicabo vitae officiis iusto laborum.
             </p>
