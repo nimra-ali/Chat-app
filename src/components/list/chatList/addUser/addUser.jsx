@@ -1,26 +1,30 @@
-import "./addUser.css"
+import { useState } from "react";
+import "./addUser.css";
 
-const AddUser = () => {
+const AddUser = ({ onAddUser }) => {
+    const [username, setUsername] = useState("");
 
-  return (
-    <div className="adduser">
-      <form>
-        <input type="text" placeholder="username" name="username" />
-        <button>Search</button>
-      </form>
-      <div className="user">
-        <div className="detail">
-          <img src="./avatar.png" alt="" />
-          <span>
-            John doe
-          </span>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (username.trim()) {
+            onAddUser(username);
+            setUsername(""); // 🔹 Clear input field
+        }
+    };
+
+    return (
+        <div className="adduser">
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Enter username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <button type="submit">Add</button>
+            </form>
         </div>
-        <button>Add user</button>
-      </div>
-    
-    </div>
-  )
-}
-
+    );
+};
 
 export default AddUser;

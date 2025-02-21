@@ -1,76 +1,84 @@
-import { useState } from "react";
-import axios from "axios";
+import "./Login.css";
 import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-const [avatar, setAvatar] = useState({ file: null, url: "" });
+    const navigate = useNavigate();
 
-    const handleAvatar = (e) => {
-        if (e.target.files[0]) {
-            setAvatar({
-                file: e.target.files[0],
-                url: URL.createObjectURL(e.target.files[0]),
-            });
-        }
-    };
-
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const { username, email, password } = Object.fromEntries(formData);
-
-        try {
-            const res = await axios.post("http://localhost:5000/register", {
-                username,
-                email,
-                password,
-                avatar: avatar.url,
-            });
-            
-            toast.success(res.data.message);
-        } catch (err) {
-            toast.error(err.response?.data?.error || "Registration failed");
-        }
-    };
-
+    // ✅ Login Function
     const handleLogin = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const { email, password } = Object.fromEntries(formData);
 
         try {
-            const res = await axios.post("http://localhost:5000/login", { email, password });
-            localStorage.setItem("token", res.data.token);
-            toast.success("Logged in successfully!");
+            await signInWithEmailAndPassword(auth, email, password);
+            toast.success("Login successful! Redirecting...");
+            navigate("/chat"); // ✅ Redirect after login
         } catch (err) {
-            toast.error(err.response?.data?.error || "Login failed");
+            console.error(err);
+            toast.error(err.message);
+        }
+    };
+
+    // ✅ Register Function
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const { username, email, password } = Object.fromEntries(formData);
+
+        try {
+            const res = await createUserWithEmailAndPassword(auth, email, password);
+            
+            // ✅ Save user info in Firestore
+            await setDoc(doc(db, "users", res.user.uid), {
+                username,
+                email,
+                id: res.user.uid,
+                blocked: [],
+            });
+
+            await setDoc(doc(db, "userchat", res.user.uid), {
+                chats: [],
+            });
+
+            toast.success("Account created! Redirecting...");
+            navigate("/chat"); // ✅ Redirect to chat page after signup
+
+        } catch (err) {
+            console.error(err);
+            toast.error(err.message);
         }
     };
 
     return (
-        <div className="login">
-            <div className="item">
-                <h2>Welcome back,</h2>
-                <form onSubmit={handleLogin}>
-                    <input type="text" placeholder="Email" name="email" />
-                    <input type="password" placeholder="Password" name="password" />
-                    <button>Sign In</button>
-                </form>
-            </div>
-            <div className="separator"></div>
-            <div className="item">
-                <h2>Create an Account</h2>
-                <form onSubmit={handleRegister}>
-                    <label htmlFor="file">
-                        <img src={avatar.url || "./avatar.png"} alt="" />
-                        Upload an image
-                    </label>
-                    <input type="file" id="file" style={{ display: "none" }} onChange={handleAvatar} />
-                    <input type="text" placeholder="Username" name="username" />
-                    <input type="text" placeholder="Email" name="email" />
-                    <input type="password" placeholder="Password" name="password" />
-                    <button>Sign Up</button>
-                </form>
+        <div className="container">
+            <div className="login-container">
+                {/* ✅ Sign In Section */}
+                <div className="login-box">
+                    <h2>Sign In</h2>
+                    <form onSubmit={handleLogin}>
+                        <input type="email" placeholder="Email" name="email" required />
+                        <input type="password" placeholder="Password" name="password" required />
+                        <button type="submit">Sign In</button>
+                    </form>
+                </div>
+
+                <div className="separator"></div> 
+
+                {/* ✅ Sign Up Section */}
+                <div className="register-box">
+                    <h2>Sign Up</h2>
+                    <form onSubmit={handleRegister}>
+                        <input type="text" placeholder="Username" name="username" required />
+                        <input type="email" placeholder="Email" name="email" required />
+                        <input type="password" placeholder="Password" name="password" required />
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -64,3 +64,7 @@ app.post("/login", async (req, res) => {
 });
 
 app.listen(5000, () => console.log("Server running on port 5000"));
+
+
+// **Update:**  
+// Today, I learned how to store data in MongoDB using collections and documents.

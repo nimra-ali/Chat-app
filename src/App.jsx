@@ -1,31 +1,19 @@
-import Chat from "./components/chat/Chat";
-import Detail from "./components/detail/Detail"
-import List from "./components/list/List"
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ChatPage from "../src/Chatpages"; 
 import Login from "./components/Login/Login";
 import Notification from "./components/Notification/Notification";
 
 const App = () => {
-
-  const user = true;
-
   return (
-    <div className='container'>
-      {user ? (
-
-        <>
-
-          <List />
-          <Chat />
-          <Detail />
-
-        </>
-      ) : (
-        <Login/>
-      )}
-
-      <Notification/>
-    </div>
-  )
-}
+    <Router >
+      <Routes >
+        <Route  path="/" element={<Login />} />
+        <Route path="/chat" element={<ChatPage />} /> 
+      </Routes>
+      <Notification />
+    </Router>
+  );
+};
 
 export default App;
