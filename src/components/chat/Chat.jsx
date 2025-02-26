@@ -5,12 +5,12 @@ import EmojiPicker from "emoji-picker-react";
 const Chat = ({ user }) => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
-  const [messages, setMessages] = useState({}); // ✅ Store messages for each user
+  const [messages, setMessages] = useState({}); 
   const endRef = useRef(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]); // ✅ Scroll to bottom when messages update
+  }, [messages]); 
 
   const handleEmoji = (e) => {
     setText((prev) => prev + e.emoji);
@@ -18,14 +18,14 @@ const Chat = ({ user }) => {
   };
 
   const handleSend = () => {
-    if (text.trim() === "") return; // ✅ Prevent empty messages
+    if (text.trim() === "") return;
 
     setMessages((prevMessages) => ({
       ...prevMessages,
       [user]: [...(prevMessages[user] || []), { text, sender: "You" }],
     }));
 
-    setText(""); // ✅ Clear input after sending message
+    setText(""); 
   };
 
   return (
@@ -49,7 +49,9 @@ const Chat = ({ user }) => {
             </div>
           </div>
         ))}
-        <div ref={endRef}></div>
+        <div ref={endRef}>
+          
+        </div>
       </div>
 
       <div className="bottom">

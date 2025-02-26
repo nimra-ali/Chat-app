@@ -8,7 +8,7 @@ const AddUser = ({ onAddUser }) => {
         e.preventDefault();
         if (username.trim()) {
             onAddUser(username);
-            setUsername(""); // 🔹 Clear input field
+            setUsername(""); 
         }
     };
 
@@ -21,6 +21,7 @@ const AddUser = ({ onAddUser }) => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
+                
                 <button type="submit">Add</button>
             </form>
         </div>
